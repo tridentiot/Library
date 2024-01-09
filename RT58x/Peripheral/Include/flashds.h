@@ -251,7 +251,7 @@ uint32_t ds_vaild(ds_search_t *dssearch, ds_t *ds_get_vaild);
 * @return
 * @retval   return current page number
 */
-extern uint32_t ds_get_current_page(void);
+uint32_t ds_get_current_page(void);
 /**
 * @brief ds_set_current_page
 *
@@ -263,7 +263,7 @@ extern uint32_t ds_get_current_page(void);
 * @retval  STATUS_SUCCESS       --- set current page success
 * @retval  STATUS_INVALID_PARAM     --- set_page is invaild parameter
 */
-extern uint32_t ds_set_current_page(uint8_t set_page);
+uint32_t ds_set_current_page(uint8_t set_page);
 /**
 * @brief ds_get_current_page_offset
 *
@@ -274,7 +274,7 @@ extern uint32_t ds_set_current_page(uint8_t set_page);
 * @return
 * @retval  curretn page offset
 */
-extern uint32_t ds_get_current_page_offset(void);
+uint32_t ds_get_current_page_offset(void);
 /**
 * @brief ds_set_current_page
 *
@@ -286,7 +286,7 @@ extern uint32_t ds_get_current_page_offset(void);
 * @retval  STATUS_SUCCESS                       --- set page address offset success
 * @retval  STATUS_INVALID_PARAM         --- set_page_offset is invaild parameter
 */
-extern uint32_t ds_set_current_page_offset(uint32_t set_page_offset);
+uint32_t ds_set_current_page_offset(uint32_t set_page_offset);
 /**
 * @brief ds_write
 *
@@ -299,7 +299,7 @@ extern uint32_t ds_set_current_page_offset(uint32_t set_page_offset);
 * @retval    STATUS_SUCCESS                 ---write data set finish
 * @retval    STATUS_INVALID_PARAM       ---data set init fail and write type error.
 */
-extern uint32_t ds_write(ds_rw_t *ds_write);
+uint32_t ds_write(ds_rw_t *ds_write);
 /**
 * @brief ds_read
 *
@@ -311,7 +311,7 @@ extern uint32_t ds_write(ds_rw_t *ds_write);
 * @retval       STATUS_SUCCESS                  ---read data set package finsih
 *                   STATUS_INVALID_PARAM        ---data set is invaild
 */
-extern uint32_t ds_read(ds_rw_t *ds_read);
+uint32_t ds_read(ds_rw_t *ds_read);
 /**
 * @brief ds_migration
 *

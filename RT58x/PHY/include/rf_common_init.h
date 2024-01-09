@@ -99,8 +99,8 @@ typedef uint8_t RF_BAND_SUPP_TYPE;
 /**************************************************************************************************
  *    Global Prototypes
  *************************************************************************************************/
-bool rf_common_tx_pwr_comp_set(int8_t offset, uint8_t poly_gain, uint8_t pa_pw_pre);
-bool rf_common_tx_pwr_ch_comp_set(int8_t offset0, int8_t offset1, int8_t offset2, int8_t offset3);
+bool rf_common_tx_pwr_comp_set(int8_t offset, uint8_t poly_gain, uint8_t pa_pw_pre, uint8_t modemType);
+bool rf_common_tx_pwr_ch_comp_set(int8_t offset0, int8_t offset1, int8_t offset2, int8_t offset3, int8_t modemType);
 bool rf_common_init_by_fw(RF_FW_LOAD_SELECT fw_select, COMM_SUBSYSTEM_ISR_t isr_func);
 
 

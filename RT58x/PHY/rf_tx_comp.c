@@ -156,7 +156,7 @@ void Tx_Power_Compensation_Update(sadc_value_t temperature, sadc_value_t vbat)
     }
 
     tx_pwr_comp = ptr_tx_pwr_comp_table[tx_pwr_comp_vbat_index][tx_pwr_comp_temperature_index];
-    rf_common_tx_pwr_comp_set(tx_pwr_comp.offset, tx_pwr_comp.poly_gain, tx_pwr_comp.pa_pw_pre);
+    rf_common_tx_pwr_comp_set(tx_pwr_comp.offset, tx_pwr_comp.poly_gain, tx_pwr_comp.pa_pw_pre, 0);
 
 #if (TX_PWR_COMP_DEBUG == 1)
     SYSCTRL->SYS_SCRATCH[4] = temperature;
