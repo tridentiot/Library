@@ -433,7 +433,7 @@ typedef enum IRQn_Type
 /*This is a software breakpoint, which will stop the firmware when using ICE debugging*/
 #define BREAK()     do{ __asm volatile ("BKPT    #0"); while(1);} while(0)
 
-#define ASSERT()    do{ while(1);} while(0)
+#define RM_ASSERT()    do{ while(1);} while(0)
 
 
 /*@}*/ /* end of group CM3MCU_Definitions */

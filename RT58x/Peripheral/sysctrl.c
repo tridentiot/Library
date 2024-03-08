@@ -800,7 +800,7 @@ sys_clk_sel_t Get_Ahb_System_Clk(void)
     {
         if ((SYSCTRL->SYS_CLK_CTRL & BASEBAND_PLL_MASK) != BASEBAND_PLL_ENABLE)
         {
-            ASSERT();
+            RM_ASSERT();
         }
         if ((SYSCTRL->SYS_CLK_CTRL & BASEBAND_PLL_FREQ_MASK) == BASEBAND_PLL_48M)
         {
@@ -813,7 +813,7 @@ sys_clk_sel_t Get_Ahb_System_Clk(void)
     }
     else
     {
-        ASSERT();
+        RM_ASSERT();
     }
 
     return clk_mode;
