@@ -9,6 +9,9 @@
 #ifndef ___SYSFUN_H__
 #define ___SYSFUN_H__
 
+#include <stdint.h>
+#include "system_cm3_mcu.h"
+
 /** @defgroup SYSFUN_Driver SYSTEM FUNTION Driver
  *  @ingroup  peripheral_group
  *  @{
@@ -77,7 +80,7 @@ extern void critical_section_init(void);
 *           So as short as possible for using this function.
 *
 */
-extern void enter_critical_section(void);
+void enter_critical_section(void);
 
 /**
  * @brief   leave critical sections
@@ -88,7 +91,7 @@ extern void enter_critical_section(void);
  *           One enter_critical_section must have one corresponding leave_critical_section!
  *
  */
-extern void leave_critical_section(void);
+void leave_critical_section(void);
 
 /**
  * @brief   check hardware chip version and software defined version compared value.
