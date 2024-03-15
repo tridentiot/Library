@@ -53,7 +53,7 @@ const uint32_t firmware_size_rfk = 0;
 
 #elif (CHIP_VERSION == RT58X_MPB)
 #if (RF_FW_INCLUDE_PCI == TRUE)
-#include "prg_pci_mpb_asic_fw.h"
+#include "prg_pci_mpb_asic_fw_v1_4_zwave.h"
 const uint32_t firmware_size_ruci = sizeof(firmware_program_ruci);
 #else
 const uint8_t firmware_program_ruci[] = {0};

@@ -94,7 +94,7 @@ typedef struct
 
     UART_T          *uart;       /*based hardware address*/
 
-    uart_info_t     *info;       // Run-Time Information
+    volatile uart_info_t     *info;       // Run-Time Information
 
     /*IRQ number*/
     IRQn_Type       irq_num;     // UART IRQ Number
@@ -110,9 +110,9 @@ typedef struct
 } uart_handle_t;
 
 
-static uart_info_t uart0_info = {0};
-static uart_info_t uart1_info = {0};
-static uart_info_t uart2_info = {0};
+static volatile uart_info_t uart0_info = {0};
+static volatile uart_info_t uart1_info = {0};
+static volatile uart_info_t uart2_info = {0};
 
 
 static const uart_handle_t  m_uart_handle[3] =
@@ -129,7 +129,7 @@ static const uart_handle_t  m_uart_handle[3] =
         1         // 1 for using user RECV Rx Handler.
 
 #else
-        1,        // 1 for enable TX DMA
+        0,        // 1 for enable TX DMA
         1,        // 1 for enable RX DMA
         0         // Enable RX DMA can not call user user defined RECV handler.
 #endif
@@ -160,7 +160,7 @@ uint32_t uart_init(uint32_t uart_id,
                    uart_event_handler_t  event_handler)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile uart_info_t          *uart_info;
     UART_T               *uart;
 
     uint32_t             cval;
@@ -296,7 +296,7 @@ uint32_t uart_init(uint32_t uart_id,
 
 uint32_t uart_uninit(uint32_t uart_id)
 {
-    uart_info_t          *uart_info;
+    volatile uart_info_t          *uart_info;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
     {
@@ -317,7 +317,7 @@ uint32_t uart_uninit(uint32_t uart_id)
 uint32_t uart_power(uint32_t uart_id, uint32_t enable)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
@@ -406,7 +406,7 @@ uint32_t uart_tx(uint32_t uart_id,
 {
 
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
     int32_t              val;
 
@@ -533,7 +533,7 @@ uint32_t  uart_rx(uint32_t uart_id,
                   uint32_t  length)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
 
@@ -689,7 +689,7 @@ uint32_t  uart_rx(uint32_t uart_id,
 void uart_rx_abort(uint32_t uart_id)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
@@ -731,7 +731,7 @@ void uart_rx_abort(uint32_t uart_id)
 void uart_tx_abort(uint32_t uart_id)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
@@ -783,7 +783,7 @@ void uart_tx_abort(uint32_t uart_id)
 bool uart_rx_ready(uint32_t uart_id)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
@@ -811,7 +811,7 @@ __STATIC_INLINE void uart_get_status_warp(uint32_t uart_id, uart_status *state)
     uint32_t             temp;
 
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
@@ -870,7 +870,7 @@ uart_status uart_status_get(uint32_t uart_id)
 uint32_t uart_set_break(uint32_t uart_id, uint32_t state)
 {
     const uart_handle_t  *uart_dev;
-    uart_info_t          *uart_info;
+    volatile  uart_info_t          *uart_info;
     UART_T               *uart;
 
     if (uart_id >= MAX_NUMBER_OF_UART)
@@ -999,7 +999,7 @@ static void uart_irqhandler(const uart_handle_t  *uart_dev)
 {
     uint32_t     iir, event, val, event1;
     UART_T       *uart;
-    uart_info_t  *uart_info;
+    volatile  uart_info_t  *uart_info;
 
     uint32_t    i, length;
     uint8_t      *ptr;
